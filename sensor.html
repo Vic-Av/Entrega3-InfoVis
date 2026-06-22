@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor</title>
+  </head>
+  <body>
+    <script src="https://app.protobject.com/framework/p.js"></script>
+    <script src="config.js"></script>
+
+    <div>Sensor activo.</div>
+
+    <script>
+        Protobject.Orientation.start(250);
+
+        Protobject.Orientation.onData((tilt) => {
+            Protobject.Core.send(tilt).to("index.html");
+        });
+    </script>
+  </body>
+</html>

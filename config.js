@@ -1,12 +1,12 @@
 Protobject.setProduction(true)
 Protobject.initialize([
   {
-    name: "Detector",
-    page: "detector.html",
+    name: "Sensor",
+    page: "sensor.html",
     debug: "local"
   },
   {
-    name: "Records",
+    name: "Info",
     page: "index.html",
     main: true,
     debug: "master"
