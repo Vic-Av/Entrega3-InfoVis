@@ -39,9 +39,15 @@
             const llamado_datos = await fetch('./datos-fichajes.json');
             const datos = await llamado_datos.json();
 
+            let prev_target;
+
             Protobject.Core.onReceived(function(target) {
               if (target) {
-                actualizarPanel(datos[target]);
+                if (prev_target!=target){
+                  console.log[target];
+                  prev_target = target;
+                  actualizarPanel(datos[target]);
+                }
               }
             });
         }
