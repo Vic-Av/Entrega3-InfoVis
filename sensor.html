@@ -15,7 +15,7 @@
         Protobject.Orientation.start(50);
 
         Protobject.Orientation.onData((tilt) => {                
-                Protobject.Core.send(tilt.horizontal).to("index.html");
+                Protobject.Core.send(360 - tilt.horizontal).to("index.html");
         });
     </script>
   </body>
