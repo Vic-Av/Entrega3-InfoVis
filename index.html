@@ -31,6 +31,84 @@
             <div id="info-contexto" class="contexto"></div>
         </div>
     </div>
+
+
+
+    <script>
+        async function grafico_fichajes() {
+            const llamado_datos = await fetch('./datos-fichajes.json');
+            const datos_json = await llamado_datos.json();
+
+            const datos = datos_json
+                .map(dato => {
+                    const fecha = prepararFecha(dato.fecha_fichaje);
+
+                    return {
+                        ...dato,
+                        anio: fecha.anio,
+                        fecha_texto: fecha.fecha_texto,
+                        orden_fecha: fecha.orden_fecha
+                    };
+                })
+                .sort((a, b) => a.orden_fecha - b.orden_fecha);
+
+            const lista_fechas = datos.map(dato => dato.x_grafico);
+            const lista_records = datos.map(dato => parseFloat(dato.coste));
+            const lista_inflados = datos.map(dato => parseFloat(dato.precio_ajustado));
+
+
+
+
+            actualizarPanel(datos[0]);
+        }
+
+
+
+
+
+        function actualizarPanel(jugador) {
+            const nombreLimpio = jugador.jugador.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+            document.getElementById('panel-info').style.opacity = 1;
+            document.getElementById('info-fecha').innerText = `Fecha del traspaso: ${jugador.fecha_texto}`;
+            document.getElementById('info-nombre').innerText = jugador.jugador;
+            document.getElementById('info-clubes').innerText = `${jugador.ultimo_club} ➜ ${jugador.nuevo_club}`;
+            document.getElementById('info-precio-original').innerHTML = `<span class="label-precio">Costo Original</span> ${jugador.coste} M€`;
+            document.getElementById('info-precio').innerHTML = `<span class="label-precio">Ajustado a Hoy</span> ${jugador.precio_ajustado} M€`;
+            document.getElementById('info-contexto').innerText = jugador.contexto || '';
+
+            let archivoFoto = '';
+            <!-- con estos tuve problems asi q los deje harcodeados no mas -->
+            if (nombreLimpio.includes('conti')) {
+                archivoFoto = 'conti.jpg';
+            } else if (nombreLimpio.includes('nazario')) {
+                archivoFoto = 'ronaldo.webp';
+            } else if (nombreLimpio.includes('figo')) {
+                archivoFoto = 'figo.webp';
+            } else if (nombreLimpio.includes('cristiano')) {
+                archivoFoto = 'cristiano.webp';
+            } else if (nombreLimpio.includes('denilson')) {
+                archivoFoto = 'denilson.webp';
+            } else if (nombreLimpio.includes('neymar')) {
+                archivoFoto = 'neymar.webp';
+            } else {
+                const apellido = nombreLimpio.split(' ').pop();
+                archivoFoto = `${apellido}.webp`;
+            }
+
+            document.getElementById('foto-jugador').style.backgroundImage = `url('img/${archivoFoto}')`;
+        }
+
+
+
+
+
+
+
+
+
+        grafico_fichajes();
+    </script>
     
 
     
