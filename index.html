@@ -39,19 +39,11 @@
             const llamado_datos = await fetch('./datos-fichajes.json');
             const datos = await llamado_datos.json();
 
-            const lista_fechas = datos.map(dato => dato.x_grafico);
-            const lista_records = datos.map(dato => parseFloat(dato.coste));
-            const lista_inflados = datos.map(dato => parseFloat(dato.precio_ajustado));
-
-
-            Protobject.Core.onReceived(function(tilt_data) {
-              if (tilt_data) {
-                console.log(tilt_data.horizontal);
+            Protobject.Core.onReceived(function(target) {
+              if (target) {
+                actualizarPanel(datos[target]);
               }
             });
-
-
-            actualizarPanel(datos[0]);
         }
 
 
