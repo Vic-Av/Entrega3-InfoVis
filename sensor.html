@@ -25,33 +25,8 @@
 
         Protobject.Orientation.start(250);
 
-        Protobject.Orientation.onData((tilt) => {
-            if (prev_tilt!=tilt.horizontal){
-                prev_tilt = tilt.horizontal;
-                let target;
-                let rot = tilt.horizontal;
-                switch(true){
-                    case(isinrange(rot, 0, 8.57) || isinrange(rot, 351.43, 360)):
-                        target = 0;
-                        break;
-                    case(isinrange(rot, 8.57, 25.71)):
-                        target = 1;
-                        break;
-                    case(isinrange(rot, 25.71, 42.85)):
-                        target = 2;
-                        break;
-                    case(isinrange(rot, 42.85, 59.99)):
-                        target = 3;
-                        break;
-                    
-                    default:
-                        target = 0;
-                        break;
-                }
-                
-                
-                Protobject.Core.send(target).to("index.html");
-            }
+        Protobject.Orientation.onData((tilt) => {                
+                Protobject.Core.send(tilt.horizontal).to("index.html");
         });
     </script>
   </body>
