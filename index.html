@@ -47,7 +47,7 @@
               st_angle = rel_tilt;
             };
 
-            let tilt = (rel_tilt-st_angle)%360;
+            let tilt = (Math.abs(rel_tilt-st_angle))%360;
 
 
             console.log(tilt);
