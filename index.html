@@ -37,20 +37,7 @@
     <script>
         async function grafico_fichajes() {
             const llamado_datos = await fetch('./datos-fichajes.json');
-            const datos_json = await llamado_datos.json();
-
-            const datos = datos_json
-                .map(dato => {
-                    const fecha = prepararFecha(dato.fecha_fichaje);
-
-                    return {
-                        ...dato,
-                        anio: fecha.anio,
-                        fecha_texto: fecha.fecha_texto,
-                        orden_fecha: fecha.orden_fecha
-                    };
-                })
-                .sort((a, b) => a.orden_fecha - b.orden_fecha);
+            const datos = await llamado_datos.json();
 
             const lista_fechas = datos.map(dato => dato.x_grafico);
             const lista_records = datos.map(dato => parseFloat(dato.coste));

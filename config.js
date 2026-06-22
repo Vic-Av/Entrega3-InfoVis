@@ -8,7 +8,7 @@ Protobject.initialize([
   {
     name: "Records",
     page: "index.html",
-    main: true
+    main: true,
     debug: "master"
   }
 ]);
