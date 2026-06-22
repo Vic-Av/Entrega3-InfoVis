@@ -26,8 +26,8 @@
 
         Protobject.Orientation.onData((tilt) => {
             
-            let target;
-            const rot = tilt.horizontal;
+            let target = tilt.horizontal;
+            /*const rot = tilt.horizontal;
             switch(true){
                 case(isinrange(rot, 0, 8.57) || isinrange(rot, 351.43, 360)):
                     target = 0;
@@ -45,7 +45,7 @@
                 default:
                     target = 0;
                     break;
-            }
+            }*/
             
             
             Protobject.Core.send(target).to("index.html");
