@@ -12,7 +12,7 @@
     <div>Sensor activo.</div>
 
     <script>
-        Protobject.Orientation.start(250);
+        Protobject.Orientation.start(200);
 
         Protobject.Orientation.onData((tilt) => {                
                 Protobject.Core.send(tilt.horizontal).to("index.html");
