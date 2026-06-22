@@ -12,17 +12,6 @@
     <div>Sensor activo.</div>
 
     <script>
-
-        function isinrange(x, y, z){
-            if (y<x && x<z){
-                return true;
-            } else {
-                return false;
-            };
-        };
-
-        let prev_tilt;
-
         Protobject.Orientation.start(250);
 
         Protobject.Orientation.onData((tilt) => {                
