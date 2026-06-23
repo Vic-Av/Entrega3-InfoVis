@@ -42,7 +42,7 @@
 
           const sfx = new Tone.Synth({
             oscillator: {
-              type: "square"
+              type: "sine"
             },
             envelope: {
               attack: 0,
@@ -50,7 +50,7 @@
               sustain: 0.8,
               release: 0
             },
-            volume: -12
+            volume: -30
           }).toDestination();
           let prev_target;
 
