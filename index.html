@@ -42,13 +42,16 @@
 
           const sfx = new Tone.Synth({
             oscillator: {
-              type: "sawtooth"
+              type: "square"
             },
             envelope: {
               attack: 0,
               decay: 0.1,
               sustain: 0.8,
               release: 0
+            },
+            volume: {
+              value: -6
             }
           }).toDestination();
           let prev_target;
