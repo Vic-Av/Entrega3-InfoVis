@@ -15,7 +15,7 @@ body {
 .main-content {
     display: flex;
     width: 100%;
-    height: 550px;
+    height: 100%;
 }
 
 #panel-info {
