@@ -40,6 +40,7 @@
           const llamado_datos = await fetch('./datos-fichajes.json');
           let datos = await llamado_datos.json();
 
+          const sfx = new Tone.Synth().toDestination();
 
           for(let i=0; i<21; i++){
             let ff = datos[i].fecha_fichaje;
@@ -131,8 +132,9 @@
             
 
             // aquí se visualiza y reproduce sonido
-            console.log[target];
+            console.log(target);
             actualizarPanel(datos[target]);
+            console.log(typeof datos[target].coste);
             
           });
         }
@@ -181,6 +183,16 @@
         }
 
 
+        async function playSFX(synth, frec_factor) {
+          await Tone.start();
+
+          const min_frec = 600;
+          const max_frec = 620;
+
+          const frec = (max_frec-min_frec)*frec_factor + min_frec;
+
+          synth.triggerAttackRelease(frec, "0.5")
+        }
 
 
 
