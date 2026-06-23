@@ -134,7 +134,7 @@
             // aquí se visualiza y reproduce sonido
             console.log(target);
             actualizarPanel(datos[target]);
-            console.log(typeof datos[target].coste);
+            playSFX(sfx, (parseFloat(datos[target].precio_ajustado) / parseFloat(datos[target].coste)));
             
           });
         }
@@ -187,9 +187,9 @@
           await Tone.start();
 
           const min_frec = 600;
-          const max_frec = 620;
+          const base_frec = 2;
 
-          const frec = (max_frec-min_frec)*frec_factor + min_frec;
+          const frec = base_frec*frec_factor + min_frec;
 
           synth.triggerAttackRelease(frec, "0.5")
         }
