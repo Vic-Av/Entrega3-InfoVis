@@ -40,7 +40,17 @@
           const llamado_datos = await fetch('./datos-fichajes.json');
           let datos = await llamado_datos.json();
 
-          const sfx = new Tone.Synth().toDestination();
+          const sfx = new Tone.Synth({
+            oscillator: {
+              type: "sawtooth"
+            },
+            envelope: {
+              attack: 0,
+              decay: 0.1,
+              sustain: 0.8,
+              release: 0
+            }
+          }).toDestination();
           let prev_target;
 
           for(let i=0; i<21; i++){
