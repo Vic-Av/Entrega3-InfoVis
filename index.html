@@ -41,6 +41,7 @@
           let datos = await llamado_datos.json();
 
           const sfx = new Tone.Synth().toDestination();
+          let prev_target;
 
           for(let i=0; i<21; i++){
             let ff = datos[i].fecha_fichaje;
@@ -132,10 +133,12 @@
             
 
             // aquí se visualiza y reproduce sonido
-            console.log(target);
-            actualizarPanel(datos[target]);
-            playSFX(sfx, (parseFloat(datos[target].precio_ajustado) / parseFloat(datos[target].coste)));
-            
+            if (target != prev_target){
+              console.log(target);
+              prev_target = target;
+              actualizarPanel(datos[target]);
+              playSFX(sfx, (parseFloat(datos[target].precio_ajustado) / parseFloat(datos[target].coste)));
+            };
           });
         }
 
