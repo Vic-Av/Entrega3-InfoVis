@@ -37,7 +37,15 @@
     <script>
         async function grafico_fichajes() {
           const llamado_datos = await fetch('./datos-fichajes.json');
-          const datos = await llamado_datos.json();
+          let datos = await llamado_datos.json();
+
+
+          for(let i=0; i<21; i++){
+            let ff = datos[i].fecha_fichaje;
+            ff = ff.split("/");
+            ff = ff[1] + "/" + ff[0] + "/" + ff[2];
+            datos[i].fecha_fichaje = ff;
+          };
 
           let st_angle;
 
@@ -140,7 +148,7 @@
             const nombreLimpio = jugador.jugador.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
             document.getElementById('panel-info').style.opacity = 1;
-            document.getElementById('info-fecha').innerText = `Fecha del traspaso: ${jugador.fecha_texto}`;
+            document.getElementById('info-fecha').innerText = `Fecha del traspaso: ${jugador.fecha_fichaje}`;
             document.getElementById('info-nombre').innerText = jugador.jugador;
             document.getElementById('info-clubes').innerText = `${jugador.ultimo_club} ➜ ${jugador.nuevo_club}`;
             document.getElementById('info-precio-original').innerHTML = `<span class="label-precio">Costo Original</span> ${jugador.coste} M€`;
