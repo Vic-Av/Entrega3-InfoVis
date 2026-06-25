@@ -151,7 +151,7 @@
               prev_target = target;
               line.clearRect(0, 0, 1360, 55);
               line.font = "20px Arial";
-              line.fillText("↓", (50 + (20-target)*(1240/20)), 50);
+              line.fillText("↓", (55 + (20-target)*(1240/20)), 50);
               actualizarPanel(datos[target]);
               playSFX(sfx, (parseFloat(datos[target].precio_ajustado) / parseFloat(datos[20].precio_ajustado)));
             };
