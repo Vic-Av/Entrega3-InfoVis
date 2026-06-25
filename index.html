@@ -38,7 +38,7 @@
 
 
     <script>
-        async function grafico_fichajes() {
+        async function grafico_fichajes(line) {
           const llamado_datos = await fetch('./datos-fichajes.json');
           let datos = await llamado_datos.json();
 
@@ -149,6 +149,8 @@
             if ((target != prev_target) && (target != -1)){
               console.log(target);
               prev_target = target;
+              line.clearRect(0, 0, 1360, 55);
+              line.fillText("↓", (46 + (20-target)*(1240/20)), 50);
               actualizarPanel(datos[target]);
               playSFX(sfx, (parseFloat(datos[target].precio_ajustado) / parseFloat(datos[20].precio_ajustado)));
             };
@@ -213,8 +215,9 @@
 
 
 
-        //proceso de inicio
 
+
+        //proceso de inicio -------------------------------------------
 
         const tl = document.getElementById("timeline");
         const tl_ctx = tl.getContext("2d");
@@ -250,9 +253,9 @@
         yeararray.reverse();
         
         for(let l=0; l<21; l++){
-          tl_ctx.moveTo((60 + l*(1240/20)), 50);
-          tl_ctx.lineTo((60 + l*(1240/20)), 150);
-          tl_ctx.fillText(yeararray[l], (46 + l*(1240/20)), 170);
+          tl_ctx.moveTo((60 + l*(1240/20)), 75);
+          tl_ctx.lineTo((60 + l*(1240/20)), 125);
+          tl_ctx.fillText(yeararray[l], (46 + l*(1240/20)), 145);
         };
 
         tl_ctx.lineWidth = 4;
@@ -262,7 +265,7 @@
 
 
 
-        grafico_fichajes();
+        grafico_fichajes(tl_ctx);
     </script>
     
 
