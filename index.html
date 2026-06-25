@@ -33,7 +33,7 @@
         </div>
     </div>
     <div>
-      <canvas id="timeline" width="1360" height="200"></canvas>
+      <canvas id="timeline" width="1360" height="160"></canvas>
     </div>
 
 
@@ -151,7 +151,7 @@
               prev_target = target;
               line.clearRect(0, 0, 1360, 55);
               line.font = "20px Arial";
-              line.fillText("↓", (55 + (20-target)*(1240/20)), 50);
+              line.fillText("↓", (55 + (20-target)*(1240/20)), 25);
               actualizarPanel(datos[target]);
               playSFX(sfx, (parseFloat(datos[target].precio_ajustado) / parseFloat(datos[20].precio_ajustado)));
             };
@@ -254,9 +254,9 @@
         yeararray.reverse();
         
         for(let l=0; l<21; l++){
-          tl_ctx.moveTo((60 + l*(1240/20)), 75);
-          tl_ctx.lineTo((60 + l*(1240/20)), 125);
-          tl_ctx.fillText(yeararray[l], (46 + l*(1240/20)), 145);
+          tl_ctx.moveTo((60 + l*(1240/20)), 50);
+          tl_ctx.lineTo((60 + l*(1240/20)), 100);
+          tl_ctx.fillText(yeararray[l], (46 + l*(1240/20)), 120);
         };
 
         tl_ctx.lineWidth = 4;
