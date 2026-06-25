@@ -222,6 +222,11 @@
         tl_ctx.beginPath();
         tl_ctx.moveTo(60, 100);
         tl_ctx.lineTo(1300, 100);
+        
+        for(let l=0; l<21; l++){
+          tl_ctx.moveTo((60 + l*(1240/20)), 50);
+          tl_ctx.lineTo((60 + l*(1240/20)), 200);
+        };
 
         tl_ctx.lineWidth = 4;
         tl_ctx.strokeStyle = "rgba(200, 200, 200, 0.4)";
