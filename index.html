@@ -33,6 +33,7 @@
         </div>
     </div>
 
+    <canvas id="timeline" width="400" height="80"></canvas>
 
 
     <script>
@@ -211,6 +212,20 @@
 
 
 
+        //proceso de inicio
+
+
+        const tl = document.getElementById("timeline");
+        const tl_ctx = tl.getContext("2d");
+
+        tl_ctx.beginPath();
+        tl_ctx.moveTo(50, 500);
+        tl_ctx.lineTo(1000, 500);
+
+        tl_ctx.lineWidth = 4;
+        tl_ctx.strokeStyle = "rgba(200, 200, 200, 0.4)";
+
+        tl_ctx.stroke();
 
 
 
