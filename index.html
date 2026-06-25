@@ -205,12 +205,12 @@
         async function playSFX(synth, frec_factor) {
           await Tone.start();
 
-          const min_frec = 200;
-          const base_frec = 80;
+          const min_frec = 180;
+          const base_frec = 110;
 
           const frec = base_frec*frec_factor + min_frec;
 
-          synth.triggerAttackRelease(frec, "0.3")
+          synth.triggerAttackRelease(frec, "0.2")
         }
 
 
