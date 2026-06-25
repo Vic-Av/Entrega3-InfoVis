@@ -218,14 +218,41 @@
 
         const tl = document.getElementById("timeline");
         const tl_ctx = tl.getContext("2d");
+        tl_ctx.font = "10px";
+        tl_ctx.fillStyle = "white";
 
         tl_ctx.beginPath();
         tl_ctx.moveTo(60, 100);
         tl_ctx.lineTo(1300, 100);
+        let yeararray = [
+          "2017",
+          "2016",
+          "2013",
+          "2009",
+          "2001",
+          "2000",
+          "2000",
+          "1999",
+          "1998",
+          "1997",
+          "1997",
+          "1992",
+          "1990",
+          "1988",
+          "1987",
+          "1986",
+          "1982",
+          "1981",
+          "1979",
+          "1978",
+          "1956"
+        ];
+        yeararray.reverse();
         
         for(let l=0; l<21; l++){
           tl_ctx.moveTo((60 + l*(1240/20)), 50);
-          tl_ctx.lineTo((60 + l*(1240/20)), 200);
+          tl_ctx.lineTo((60 + l*(1240/20)), 150);
+          tl_ctx.fillText(yeararray[l], (60 + l*(1240/20)), 170);
         };
 
         tl_ctx.lineWidth = 4;
