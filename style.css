@@ -48,5 +48,5 @@ body {
 .clubes { color: #aaa; font-style: italic; margin-bottom: 15px; }
 .precio { font-size: 1.8em; color: #ff4d4d; font-weight: 900; }
 .precio-original { font-size: 1.2em; color: #3b82f6; margin-top: 10px; }
- .label-precio { font-size: 0.6em; color: #666; display: block; text-transform: uppercase; }
+.label-precio { font-size: 0.6em; color: #666; display: block; text-transform: uppercase; }
 .contexto { font-size: 0.85em; color: #cccccc; margin-top: 20px; line-height: 1.4; border-top: 1px solid #333; padding-top: 15px; text-align: justify; }
